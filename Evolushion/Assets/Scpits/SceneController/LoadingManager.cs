@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Gamekit2D;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
@@ -8,7 +7,7 @@ using Image = UnityEngine.UI.Image;
 public class LoadingManager : MonoBehaviour
 {
     #region Fields
-
+    
     [Header("Loading Visuals")]
     public Image[] progressBar;
     public Sprite loadingIcon;
@@ -29,36 +28,18 @@ public class LoadingManager : MonoBehaviour
         else if (Instance != this)
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
-
-	public IEnumerator GotLoadingResponse()
-	{
-        //Emulator downloading
-		yield return new WaitForSeconds(5f);
-        gotLoadingResponse = true;
-		yield return null;
-        Debug.Log($"public IEnumerator GotLoadingResponse()");
-	}
-
-	public IEnumerator LoadSavedScene(string sceneName)
+    
+    public IEnumerator LoadSavedScene()
     {
-		StartCoroutine(GotLoadingResponse());
-
-        /*if (currentScene.name != loadingScene)
-        {
-            SceneManager.LoadScene(loadingScene);
-        }
-        */
-
         int i = 0;
-        Debug.Log($"{GameManager.Instance.loadingGame}");
+        
         //shows loading process visuals till data load
         if (GameManager.Instance.loadingGame)
         {
             while (!gotLoadingResponse)
             {
-                Debug.Log($"while (!gotLoadingResponse) {gotLoadingResponse} ");
                 progressBar[i].sprite = loadingDoneIcon;
 
                 if (i == 0)
@@ -80,7 +61,7 @@ public class LoadingManager : MonoBehaviour
                 yield return new WaitForSeconds(fadeDuration);
             }
 
-            GameManager.Instance.Load();
+            GameManager.Instance.LoadMainGameScene();
         }
         
         yield return null;

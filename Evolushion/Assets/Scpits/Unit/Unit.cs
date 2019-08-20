@@ -5,6 +5,11 @@ public class Unit : MonoBehaviour, TouchTargetedDelegate
 {
     private void Start()
     {
+
+        foreach (var unit in Data.unit.items)
+        {
+            Debug.Log($"{unit.gold_amount} + {unit.id}" );
+        }
         GameObject go = GameObject.Find("SharedTouchDispatcher");
         go.GetComponent<TouchDispatcher>().addTargetedDelegate(this, 1, false);
     }

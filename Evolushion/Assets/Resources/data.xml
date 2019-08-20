@@ -1,0 +1,19 @@
+﻿<data preset="">
+	<general id="type" type="" value="" _static="TRUE">
+		<item id="gold.start_count" type="int" value="150" _static=""/>
+		<item id="food.start_count" type="int" value="100" _static=""/>
+		<item id="field.width" type="int" value="15" _static=""/>
+		<item id="field.height" type="int" value="15" _static=""/>
+		<item id="field.depth" type="int" value="15" _static=""/>
+	</general>
+	<meel id="type" name="">
+		<item id="meel1" name="Meel 1"/>
+		<item id="meel2" name="Meel 2"/>
+		<item id="meel3" name="Meel 3"/>
+	</meel>
+	<unit id="type" icon="" gold_amount="int" ad_x="int" chance="">
+		<item id="unit.fermer" icon="fermer" gold_amount="5" ad_x="3" chance="10"/>
+		<item id="unit.worker" icon="worker" gold_amount="10" ad_x="3" chance="10"/>
+		<item id="unit.senior" icon="senior" gold_amount="20" ad_x="3" chance="10"/>
+	</unit>
+</data>

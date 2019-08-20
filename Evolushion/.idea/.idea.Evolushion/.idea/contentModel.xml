@@ -6,8 +6,16 @@
     <e p="C:\Users\35797\Documents\GitHub\Evolushion\Evolushion" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Resources" t="Include">
+          <e p="data.xml" t="Include" />
+          <e p="gamedata.xml" t="Include" />
+        </e>
         <e p="Scpits" t="Include">
+          <e p="DataHandler" t="Include">
+            <e p="AllData.cs" t="Include" />
+          </e>
           <e p="SceneController" t="Include">
+            <e p="Data.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="LoadingManager.cs" t="Include" />
             <e p="ScreenFader.cs" t="Include" />
