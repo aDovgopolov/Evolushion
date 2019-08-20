@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.Serialization;
 using Image = UnityEngine.UI.Image;
 
-public class LoadingManager : MonoBehaviour
+public class SplashSceneLoader : MonoBehaviour
 {
     #region Fields
     
@@ -16,8 +15,8 @@ public class LoadingManager : MonoBehaviour
     
     [Header("Timing Settings")]
     public float fadeDuration;
-    public bool gotLoadingResponse;
-    public static LoadingManager Instance;
+    public bool isLoading;
+    public static SplashSceneLoader Instance;
 
     #endregion
 
@@ -27,8 +26,6 @@ public class LoadingManager : MonoBehaviour
             Instance = this;
         else if (Instance != this)
             Destroy(gameObject);
-
-        //DontDestroyOnLoad(gameObject);
     }
     
     public IEnumerator LoadSavedScene()
@@ -36,10 +33,11 @@ public class LoadingManager : MonoBehaviour
         int i = 0;
         
         //shows loading process visuals till data load
-        if (GameManager.Instance.loadingGame)
+        if (GameManager.Instance.IsGameLoading)
         {
-            while (!gotLoadingResponse)
+            while (!isLoading)
             {
+                if (isLoading) break; // when loaded new scene 1 tick NPE
                 progressBar[i].sprite = loadingDoneIcon;
 
                 if (i == 0)
@@ -60,8 +58,6 @@ public class LoadingManager : MonoBehaviour
 
                 yield return new WaitForSeconds(fadeDuration);
             }
-
-            GameManager.Instance.LoadMainGameScene();
         }
         
         yield return null;

@@ -6,7 +6,7 @@ public class Unit : MonoBehaviour, TouchTargetedDelegate
     private void Start()
     {
 
-        foreach (var unit in Data.unit.items)
+        foreach (var unit in GameSettings.unit.items)
         {
             Debug.Log($"{unit.gold_amount} + {unit.id}" );
         }

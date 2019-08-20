@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<AllData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <GoldCount>150</GoldCount>
-</AllData>
+<DataHandler xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <GoldCount>5</GoldCount>
+</DataHandler>

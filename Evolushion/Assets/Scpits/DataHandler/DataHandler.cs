@@ -1,8 +1,9 @@
-using System.Collections.Generic;
+using System;
+using System.IO;
+using System.Xml.Serialization;
 
 [System.Serializable]
-
-public class AllData
+public class DataHandler
 {    
     private int goldCount;
     public int GoldCount 
@@ -10,4 +11,5 @@ public class AllData
         get => goldCount; 
         set => goldCount = value; 
     }
+    
 }

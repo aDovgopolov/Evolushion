@@ -12,13 +12,14 @@
         </e>
         <e p="Scpits" t="Include">
           <e p="DataHandler" t="Include">
-            <e p="AllData.cs" t="Include" />
+            <e p="DataHandler.cs" t="Include" />
+            <e p="DataLoader.cs" t="Include" />
+            <e p="GameSettings.cs" t="Include" />
           </e>
+          <e p="GameManager.cs" t="Include" />
           <e p="SceneController" t="Include">
-            <e p="Data.cs" t="Include" />
-            <e p="GameManager.cs" t="Include" />
-            <e p="LoadingManager.cs" t="Include" />
             <e p="ScreenFader.cs" t="Include" />
+            <e p="SplashSceneLoader.cs" t="Include" />
           </e>
           <e p="Touch" t="Include">
             <e p="TouchDispatcher.cs" t="Include" />

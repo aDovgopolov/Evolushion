@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
-//using System.Collections.Specialized;
 using System.Xml;
 using UnityEngine;
 
 //TODO: use dictinary instead of list
-public static class Data
+public static class GameSettings
 {
     public static class general
     {
@@ -190,8 +188,7 @@ public static class Data
                 Debug.LogError("data::unit: already contains key '" + id + "'");
         }
         
-        // now emulate 3 sec download in LoadingManager
-        //LoadingManager.Instance.gotLoadingResponse = true;
+        GameManager.Instance.SettingsLoaded = true;
     }
 
 
