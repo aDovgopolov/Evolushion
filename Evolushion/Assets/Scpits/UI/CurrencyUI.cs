@@ -12,12 +12,8 @@ public class CurrencyUI : MonoBehaviour
     [Header("UI")]
     public Text armyText;
     public Text foodText;
-
     public Text coinText;
-
     public Text gemsText;
-    [Space]
-    public Text settingsText;
     
     #endregion
     
@@ -26,11 +22,6 @@ public class CurrencyUI : MonoBehaviour
         Instance = this;
     }
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void OpenSettings()
     {

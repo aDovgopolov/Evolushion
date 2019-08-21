@@ -11,6 +11,13 @@ public class ScreenFader : MonoBehaviour
         GameOver,
     }
 
+    public static bool IsFading
+    {
+        get { return Instance.m_IsFading; }
+    }
+
+    protected static ScreenFader s_Instance;
+
     public static ScreenFader Instance
     {
         get
@@ -26,13 +33,6 @@ public class ScreenFader : MonoBehaviour
             return s_Instance;
         }
     }
-
-    public static bool IsFading
-    {
-        get { return Instance.m_IsFading; }
-    }
-
-    protected static ScreenFader s_Instance;
 
     public static void Create()
     {
@@ -62,14 +62,11 @@ public class ScreenFader : MonoBehaviour
 
     protected IEnumerator Fade(float finalAlpha, CanvasGroup canvasGroup)
     {
-        Debug.Log("Fade");
         m_IsFading = true;
         canvasGroup.blocksRaycasts = true;
         float fadeSpeed = Mathf.Abs(canvasGroup.alpha - finalAlpha) / fadeDuration;
-        
         while (!Mathf.Approximately(canvasGroup.alpha, finalAlpha))
         {
-            Debug.Log("Fade while ");
             canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, finalAlpha, fadeSpeed * Time.deltaTime);
             yield return null;
         }
@@ -77,19 +74,15 @@ public class ScreenFader : MonoBehaviour
         canvasGroup.alpha = finalAlpha;
         m_IsFading = false;
         canvasGroup.blocksRaycasts = false;
-
-        Debug.Log("Fade end");
     }
 
     public static void SetAlpha(float alpha)
     {
-        Debug.Log("SetAlpha");
         Instance.faderCanvasGroup.alpha = alpha;
     }
 
     public static IEnumerator FadeSceneIn()
     {
-        Debug.Log("public static IEnumerator FadeSceneIn ()");
         CanvasGroup canvasGroup;
         if (Instance.faderCanvasGroup.alpha > 0.1f)
             canvasGroup = Instance.faderCanvasGroup;
@@ -101,12 +94,10 @@ public class ScreenFader : MonoBehaviour
         yield return Instance.StartCoroutine(Instance.Fade(0f, canvasGroup));
 
         canvasGroup.gameObject.SetActive(false);
-        Debug.Log($"{canvasGroup}");
     }
 
     public static IEnumerator FadeSceneOut(FadeType fadeType = FadeType.Black)
     {
-        Debug.Log("public static IEnumerator FadeSceneOut (FadeType fadeType = FadeType.Black)");
         CanvasGroup canvasGroup;
         switch (fadeType)
         {
