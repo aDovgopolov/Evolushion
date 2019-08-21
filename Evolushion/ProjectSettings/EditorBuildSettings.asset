@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Adventure.unity
     guid: 567a7fe25a1cfc347a00c11f987131ae
+  - enabled: 1
+    path: Assets/Scenes/Ferm.unity
+    guid: 32324efdd928ca94aacac7ca3e218079
   m_configObjects: {}

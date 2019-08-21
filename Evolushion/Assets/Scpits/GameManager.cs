@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.IO;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +19,6 @@ public class GameManager : MonoBehaviour
     public event OnDataLoaded onDataLoaded;
     
     #endregion
-
     
     #region Methods
     
@@ -68,13 +65,12 @@ public class GameManager : MonoBehaviour
         
         while (!SettingsLoaded && !PlayerDataLoaded)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
         // Set loaded data. Kostul? 
         //dataHandler = onDataLoaded?.Invoke();
         //stop loading UI
         SplashSceneLoader.Instance.isLoading = false;
-        yield return new WaitForSeconds(1f);
         
         LoadMainGameScene();
         yield return null;
@@ -88,53 +84,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region afterRefactoring
-    
-    private void LoadGameSettings()
-    {
-        GameSettings.init("data");
-    }
-    private void LoadUserDataFromXml()
-    {
-        /*string path = "Assets\\Resources\\gamedata.xml";
-        
-        if (File.Exists(path))
-        {
-            try
-            {
-                XmlSerializer formatter = new XmlSerializer(typeof(DataHandler));
-                using (FileStream fs = new FileStream("Assets\\Resources\\gamedata.xml", FileMode.OpenOrCreate))
-                {
-                    //empty file can be
-                    _dataHandler = (DataHandler) formatter.Deserialize(fs);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.ToString());
-            }
-        }
-
-        if (_dataHandler == null)
-        {
-            _dataHandler = new DataHandler();
-        }
-
-        PlayerDataLoaded = true;*/
-    }
-    
-    private void Save()
-    {
-        /*string writer = "Assets\\Resources\\gamedata.xml";
-
-        FileStream fileStream = File.Open(writer, FileMode.Open);
-        fileStream.SetLength(0);
-        fileStream.Close();
-
-        XmlSerializer serializer = new XmlSerializer(typeof(DataHandler));
-        FileStream fs = new FileStream(writer, FileMode.OpenOrCreate);
-
-        serializer.Serialize(fs, _dataHandler);*/
-    }
     
 
     #endregion

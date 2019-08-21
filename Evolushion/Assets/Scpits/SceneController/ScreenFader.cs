@@ -66,6 +66,7 @@ public class ScreenFader : MonoBehaviour
         m_IsFading = true;
         canvasGroup.blocksRaycasts = true;
         float fadeSpeed = Mathf.Abs(canvasGroup.alpha - finalAlpha) / fadeDuration;
+        
         while (!Mathf.Approximately(canvasGroup.alpha, finalAlpha))
         {
             Debug.Log("Fade while ");

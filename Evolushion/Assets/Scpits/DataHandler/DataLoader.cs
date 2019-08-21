@@ -57,7 +57,7 @@ public class DataLoader
         }
         
         // for test
-        _dataHandler.GoldCount = 5;
+        //_dataHandler.GoldCount = 5;
         
         GameManager.Instance.dataHandler = _dataHandler;
         GameManager.Instance.PlayerDataLoaded = true;

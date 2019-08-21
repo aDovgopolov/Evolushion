@@ -25,6 +25,10 @@
             <e p="TouchDispatcher.cs" t="Include" />
             <e p="TouchTargetedDelegate.cs" t="Include" />
           </e>
+          <e p="UI" t="Include">
+            <e p="CurrencyUI.cs" t="Include" />
+            <e p="SingleButtonTimeless.cs" t="Include" />
+          </e>
           <e p="Unit" t="Include">
             <e p="Unit.cs" t="Include" />
           </e>

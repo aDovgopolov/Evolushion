@@ -11,11 +11,11 @@ public class SplashSceneLoader : MonoBehaviour
     public Image[] progressBar;
     public Sprite loadingIcon;
     public Sprite loadingDoneIcon;
-    public Image loadingCanvasBackground;
+    public Sprite loadingCanvasBackground;
     
     [Header("Timing Settings")]
     public float fadeDuration;
-    public bool isLoading;
+    public bool isLoading = true;
     public static SplashSceneLoader Instance;
 
     #endregion
@@ -35,9 +35,10 @@ public class SplashSceneLoader : MonoBehaviour
         //shows loading process visuals till data load
         if (GameManager.Instance.IsGameLoading)
         {
-            while (!isLoading)
+            while (isLoading)
             {
-                if (isLoading) break; // when loaded new scene 1 tick NPE
+                if (!isLoading) break; 
+                
                 progressBar[i].sprite = loadingDoneIcon;
 
                 if (i == 0)
