@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,11 +25,11 @@ public class BuildingManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
-    
+
     //vremenniu kostul dlya testa
     public void SetBuildigIsBuild()
     {
-        Debug.Log("SetBuildigIsBuild");
+//        Debug.Log("SetBuildigIsBuild");
         _buildList[0].GetComponent<Building>().ChangeSprite();
     }
     

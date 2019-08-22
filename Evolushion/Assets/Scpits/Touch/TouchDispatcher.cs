@@ -93,11 +93,11 @@ public class TouchDispatcher : MonoBehaviour
 	
 	protected virtual void MakeDetectionMouse()
 	{
-		Debug.Log("protected virtual void MakeDetectionMouse()");
+//		Debug.Log("protected virtual void MakeDetectionMouse()");
 		
 		//left mouse button
 		if(Input.GetMouseButtonDown (0)){
-			Debug.Log("before мышь не была отжата");
+//			Debug.Log("before мышь не была отжата");
 			//мышь не была отжата
 			if(!mouseReleased){
 				TouchCanceled(Input.mousePosition,1);
@@ -113,14 +113,14 @@ public class TouchDispatcher : MonoBehaviour
 		//зажатый компонент
 		if(Input.GetMouseButton (0))
 		{
-			Debug.Log("зажатый компонент");
+			//Debug.Log("зажатый компонент");
 			TouchMoved(Input.mousePosition,1);
 		}
 		//released button
 		if(Input.GetMouseButtonUp (0))
 		{
 			mouseReleased=true;
-			Debug.Log("released button");
+//			Debug.Log("released button");
 			TouchEnded(Input.mousePosition,1);
 		}
 	}

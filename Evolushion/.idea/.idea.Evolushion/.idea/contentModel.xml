@@ -16,9 +16,12 @@
             <e p="GameManager.cs" t="Include" />
           </e>
           <e p="DataHandler" t="Include">
+            <e p="BuildingFactory.cs" t="Include" />
             <e p="DataHandler.cs" t="Include" />
             <e p="DataLoader.cs" t="Include" />
+            <e p="GameData.cs" t="Include" />
             <e p="GameSettings.cs" t="Include" />
+            <e p="MiniJson.cs" t="Include" />
           </e>
           <e p="SceneManagement" t="Include">
             <e p="SceneController.cs" t="Include" />

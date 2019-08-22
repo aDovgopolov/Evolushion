@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         _dataLoader = new DataLoader();
-        
+        _dataLoader = new DataLoader();
         //init services
         
         //load data from settings and player
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     private void LoadData()
     {
         IsGameLoading = true;
+       
         
         StartCoroutine(SplashSceneLoader.Instance.LoadSavedScene());
         StartCoroutine(GotLoadingResponse());

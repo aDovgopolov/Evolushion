@@ -9,7 +9,7 @@ public class SingleButtonTimeless : MonoBehaviour
     public void LoadFarmScene()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        Debug.Log($"{sceneName}");
+//        Debug.Log($"{sceneName}");
         if (sceneName.Equals("Ferm"))
         {
             SceneController.Instance.TransitionToScene();

@@ -8,9 +8,10 @@ using UnityEngine;
 public class DataLoader 
 {
     private DataHandler _dataHandler;
-
+    private GameData gameData;
     public DataLoader()
     {
+        gameData = new GameData();
         GameManager.Instance.onDataLoaded += SetData;
     }
 
@@ -56,8 +57,8 @@ public class DataLoader
             _dataHandler = new DataHandler();
         }
         
-        // for test
-        //_dataHandler.GoldCount = 5;
+         gameData.Load(_dataHandler.json);
+        _dataHandler.init();
         
         GameManager.Instance.dataHandler = _dataHandler;
         GameManager.Instance.PlayerDataLoaded = true;
@@ -76,10 +77,12 @@ public class DataLoader
         FileStream fileStream = File.Open(writer, FileMode.Open);
         fileStream.SetLength(0);
         fileStream.Close();
-
+        
+        _dataHandler.json = gameData.Save();
+            
+        _dataHandler.showData();
         XmlSerializer serializer = new XmlSerializer(typeof(DataHandler));
         FileStream fs = new FileStream(writer, FileMode.OpenOrCreate);
-
         serializer.Serialize(fs, _dataHandler);
     }
 }
