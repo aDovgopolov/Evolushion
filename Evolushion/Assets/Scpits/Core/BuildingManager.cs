@@ -13,9 +13,9 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> _buildList = new List<GameObject>();
     #endregion
-
     
     #region Methods
+    
     private void Awake()
     {
         if (instance == null)
@@ -26,12 +26,31 @@ public class BuildingManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    //vremenniu kostul dlya testa
+    private void Start()
+    {
+        SetBuildingsOnMap();
+    }
+
     public void SetBuildigIsBuild()
     {
-//        Debug.Log("SetBuildigIsBuild");
         _buildList[0].GetComponent<Building>().ChangeSprite();
+       // _buildList[0].GetComponent<Building>().ChangeSprite();
     }
-    
+
+    public void SetBuildingsOnMap()
+    {
+            Debug.Log(GameManager.Instance.gameData.GetBuildings().Count);
+            
+            foreach (KeyValuePair<string, Building> keyValue in GameManager.Instance.gameData.GetBuildings())
+            {
+                Debug.Log(keyValue.Key + " - " + keyValue.Value.GetID() + keyValue.Value.GetType());
+                if (keyValue.Value.GetID().Equals("ferma") && keyValue.Value.IsBuilt)
+                {
+                    _buildList[0].GetComponent<Building>().ChangeSprite();
+                    keyValue.Value.IsBuilt = true;
+                }
+            }
+            
+    }
     #endregion
 }

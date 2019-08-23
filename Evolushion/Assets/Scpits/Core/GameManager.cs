@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     #region fields
 
     public static GameManager Instance;
+    
+    public GameData gameData;
     public bool IsGameLoading { get; private set; }
     public bool SettingsLoaded{ get; set; }
     public bool PlayerDataLoaded{ get; set; }
@@ -16,7 +18,7 @@ public class GameManager : MonoBehaviour
     public DataHandler dataHandler;
     
     public delegate DataHandler OnDataLoaded();
-    public event OnDataLoaded onDataLoaded;
+    public event OnDataLoaded onDataLoaded; // Ne dergetsya nigde
     
     #endregion
     
@@ -36,10 +38,8 @@ public class GameManager : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         _dataLoader = new DataLoader();
-        _dataLoader = new DataLoader();
-        //init services
+        gameData = new GameData();
         
-        //load data from settings and player
         LoadData();
     }
 
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
     private void LoadData()
     {
         IsGameLoading = true;
-       
         
         StartCoroutine(SplashSceneLoader.Instance.LoadSavedScene());
         StartCoroutine(GotLoadingResponse());
@@ -76,6 +75,7 @@ public class GameManager : MonoBehaviour
     
     private void OnApplicationQuit()
     {
+        //dataHandler.json = gameData.Save();
         _dataLoader.Save();
     }
     

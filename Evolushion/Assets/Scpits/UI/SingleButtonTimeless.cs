@@ -16,7 +16,10 @@ public class SingleButtonTimeless : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.gameData.GetBuildings()["ferma"].IsBuilt = true;
+            
             BuildingManager.instance.SetBuildigIsBuild();
+            //BuildingManager.instance.SetBuildigIsBuild();
         }
     }
 }

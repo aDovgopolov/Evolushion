@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
 
 public class DataLoader 
 {
+    #region fields
+    
     private DataHandler _dataHandler;
     private GameData gameData;
+
+    #endregion
+
+    #region Methods
+
     public DataLoader()
     {
-        gameData = new GameData();
         GameManager.Instance.onDataLoaded += SetData;
     }
 
     public void StartLoad()
     {
-        // Start load settings
         LoadGameSettings();
-        //Start load person data
         LoadUserDataFromXml();
-        //Start load settings
     }
 
     private DataHandler SetData()
@@ -41,7 +42,6 @@ public class DataLoader
                 XmlSerializer formatter = new XmlSerializer(typeof(DataHandler));
                 using (FileStream fs = new FileStream("Assets\\Resources\\gamedata.xml", FileMode.OpenOrCreate))
                 {
-                    //empty file can be
                     _dataHandler = (DataHandler) formatter.Deserialize(fs);
                 }
             }
@@ -53,14 +53,15 @@ public class DataLoader
 
         if (_dataHandler == null)
         {    
-            // init null strategy
             _dataHandler = new DataHandler();
         }
         
-         gameData.Load(_dataHandler.json);
-        _dataHandler.init();
-        
         GameManager.Instance.dataHandler = _dataHandler;
+        
+        GameManager.Instance.gameData.Abdicate();
+        GameManager.Instance.gameData.Load(_dataHandler.json);
+        GameManager.Instance.gameData.init();
+        
         GameManager.Instance.PlayerDataLoaded = true;
     }
     
@@ -78,11 +79,13 @@ public class DataLoader
         fileStream.SetLength(0);
         fileStream.Close();
         
-        _dataHandler.json = gameData.Save();
+        _dataHandler.json = GameManager.Instance.gameData.Save();
             
-        _dataHandler.showData();
         XmlSerializer serializer = new XmlSerializer(typeof(DataHandler));
         FileStream fs = new FileStream(writer, FileMode.OpenOrCreate);
         serializer.Serialize(fs, _dataHandler);
     }
+
+    #endregion
+    
 }

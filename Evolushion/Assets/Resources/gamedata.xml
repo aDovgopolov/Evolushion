@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <DataHandler xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <json>{"version":1,"spells":{"sdasdads":"null","asdasdasdasd":"null"}}</json>
-  <manaCount>50</manaCount>
-  <GoldCount>347</GoldCount>
+  <json>{"version":1,"boosters":{"id":{"id":"id","type":"booster"}},"buildings":{"ferma":{"id":"ferma","type":"building1","isBuilt":true}}}</json>
+  <GoldCount>309</GoldCount>
 </DataHandler>

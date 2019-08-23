@@ -22,6 +22,9 @@
             <e p="GameData.cs" t="Include" />
             <e p="GameSettings.cs" t="Include" />
             <e p="MiniJson.cs" t="Include" />
+            <e p="tests" t="Include">
+              <e p="Booster.cs" t="Include" />
+            </e>
           </e>
           <e p="SceneManagement" t="Include">
             <e p="SceneController.cs" t="Include" />
